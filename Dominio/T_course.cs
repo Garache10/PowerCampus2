@@ -11,7 +11,5 @@ namespace Dominio
         public DateTime time_schedule { get; set; }
         public int career_id { get; set; }
         public int teacher_id { get; set; }
-        public T_career t_career { get; set; }
-        public T_user t_user { get; set; }
     }
 }

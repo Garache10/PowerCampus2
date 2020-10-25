@@ -9,7 +9,4 @@ namespace Dominio
         public int id_det_inscription { get; set; }
         public int inscription_id { get; set; }
         public int course_id { get; set; }
-        public T_inscription t_inscription { get; set; }
-        public T_course t_course { get; set; }
-    }
 }

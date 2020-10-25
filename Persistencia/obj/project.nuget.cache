@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WnQdjlc7uCogC1weTvh6ohGKYTbsX/ul4OckCpWrcesQ8UHWwofSKmNGD/xaouICqYMC0G8X+jdYs9sEP8RMvw==",
+  "dgSpecHash": "29o9ZYXmnAPutsGqzKCEQwxsH9K3IpSreH68qJ0OTVbEIwUbIuUmryeKOrNiVLv8k4Oj3ScNRn3NcAqasI7cbw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Persistencia\\Persistencia.csproj",
+  "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Persistencia\\Persistencia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

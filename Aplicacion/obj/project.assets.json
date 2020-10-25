@@ -5691,11 +5691,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Aplicacion\\Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Aplicacion\\Aplicacion.csproj",
       "projectName": "Aplicacion",
-      "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Aplicacion\\Aplicacion.csproj",
+      "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Aplicacion\\Aplicacion.csproj",
       "packagesPath": "C:\\Users\\José Ángel Garache\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Aplicacion\\obj\\",
+      "outputPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\José Ángel Garache\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5711,11 +5711,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Dominio\\Dominio.csproj"
+            "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Dominio\\Dominio.csproj"
             },
-            "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Persistencia\\Persistencia.csproj": {
-              "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Persistencia\\Persistencia.csproj"
+            "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Persistencia\\Persistencia.csproj": {
+              "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Persistencia\\Persistencia.csproj"
             }
           }
         }

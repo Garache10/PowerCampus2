@@ -9,6 +9,5 @@ namespace Dominio
         public int id_group { get; set; }
         public int course_id { get; set; }
         public int quota { get; set; }
-        public T_course t_course { get; set; }
     }
 }

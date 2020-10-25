@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c/PHsRPa+gynnAKNt4Q47O4aREzUbHD4AMv9tM6mbUOHvXcybbJuObSytGHwM1CE28+ktzIToDDKbtHxkFst7Q==",
+  "dgSpecHash": "GDH4eGAXFwf57ukJ2ACypodW/WXjjTEKDAfL7Puf5FMjBfECYlh176YRjaksRPm88xDnPuHwrpPfuqv+bP3FNA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\WebAPI\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

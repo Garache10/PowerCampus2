@@ -5709,11 +5709,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\WebAPI\\WebAPI.csproj",
+      "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\José Ángel Garache\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\WebAPI\\obj\\",
+      "outputPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\José Ángel Garache\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5729,8 +5729,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Aplicacion\\Aplicacion.csproj": {
-              "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Aplicacion\\Aplicacion.csproj"
+            "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Aplicacion\\Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Aplicacion\\Aplicacion.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XbGJcbJSmsSAlrl2K5LU/cFxSFvBPsIUjk5aabDXfzo1tcNfKSMPhUtzobjIpobgVHBMPPCdn9awiP93DhkIQQ==",
+  "dgSpecHash": "gqJ626eh1uW2N8grS3HYqkR2a8L2ZyT66f7qkzKhUr70ndEswMLh7bDWa1yNvHAJkrMFT0g/Qq87/GMkcQtg3Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\WebAPI\\Dominio\\Dominio.csproj",
+  "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Dominio\\Dominio.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
