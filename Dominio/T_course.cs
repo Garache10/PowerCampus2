@@ -8,8 +8,8 @@ namespace Dominio
     {
         public int id_course { get; set; }
         public string course { get; set; }
-        public DateTime time_schedule { get; set; }
+        public DateTime? time_schedule { get; set; }
         public int career_id { get; set; }
-        public int teacher_id { get; set; }
+        public int? teacher_id { get; set; }
     }
 }

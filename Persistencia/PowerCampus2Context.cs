@@ -29,7 +29,7 @@ namespace Persistencia
         public DbSet<T_career> t_career { get; set; }
         public DbSet<T_course> t_course { get; set; }
         public DbSet<T_group> t_group { get; set; }
-        public DbSet<T_inscription> t_inscriprion { get; set; }
+        public DbSet<T_inscription> t_inscription { get; set; }
         public DbSet<T_det_inscription> t_det_inscription { get; set; }
     }
 }
