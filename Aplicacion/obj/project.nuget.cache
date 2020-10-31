@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tRIFXXamK7WR6u6viQV7NtrTjgqECVpzpbrUnkd1PvpBHPe13QpIYKXad5YrOs/DjIABsjouxrzd0h33YtXULg==",
+  "dgSpecHash": "h1Vs0mILlWLAb6K9Na+Grwh2ZmM0U+U1RDgnL/4uyS++asbI20s0NwMfBglfUMjLRIYDIbqfOEqx483/YsZ9Rw==",
   "success": true,
   "projectFilePath": "C:\\Users\\José Ángel Garache\\Documents\\Visual Studio 2019\\Projects\\PowerCampus2\\Aplicacion\\Aplicacion.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\José Ángel Garache\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\José Ángel Garache\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\José Ángel Garache\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

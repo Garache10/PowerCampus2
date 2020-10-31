@@ -1,4 +1,6 @@
-﻿using Dominio;
+﻿using Aplicacion.Users;
+using Dominio;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistencia;
@@ -13,60 +15,57 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly PowerCampus2Context context;
-        public UserController(PowerCampus2Context _context)
+        private readonly IMediator _mediator;
+        public UserController(IMediator mediator)
         {
-            this.context = _context;
+            _mediator = mediator;
         }
 
         //Obtener todos los registros
         public async Task<ActionResult<IEnumerable<T_user>>> GetUser()
         {
-            return await context.t_user.ToListAsync();
+            return await _mediator.Send(new Consulta.ListaUsers());
         }
 
         //Obtener por id_user
         [HttpGet("{id_user}")]
         public async Task<ActionResult<T_user>> GetUser(int id_user)
         {
-            var user = await context.t_user.FindAsync(id_user);
+            var user = await _mediator.Send(new ConsultaId.OnlyUser { id_user = id_user });
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            //Código para obtener el rol del usuario
-            var role = await context.t_role.FindAsync(user.role_id);
-            System.Diagnostics.Debug.WriteLine("ROLE: ", role.role);
+            /*/Código para obtener el rol del usuario
+            var role = await _mediator.t_role.FindAsync(user.role_id);
+            System.Diagnostics.Debug.WriteLine("ROLE: ", role.role);*/
 
             return user;
         }
 
         //Insertar un usuario
         [HttpPost]
-        public async Task<ActionResult<T_user>> PostUser(T_user user)
+        public async Task<ActionResult<Unit>> PostUser(Agregar.newUser data)
         {
-            context.t_user.Add(user);
-            await context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.id_user }, user);
+            return await _mediator.Send(data);
         }
 
         //Modificar un usuario
-        [HttpPut("{id_user}")]
-        public async Task<IActionResult> PutUser(int id_user, T_user user)
+        //[HttpPut("{id_user}")]
+        /*public async Task<IActionResult> PutUser(int id_user, T_user user)
         {
             if (id_user != user.id_user)
             {
                 return BadRequest();
             }
 
-            context.Entry(user).State = EntityState.Modified;
+            //_mediator.Entry(user).State = EntityState.Modified;
 
             try
             {
-                await context.SaveChangesAsync();
+                //await _mediator.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -85,23 +84,23 @@ namespace WebAPI.Controllers
 
         //Borrar un usuario
         [HttpDelete("{id_user}")]
-        public async Task<ActionResult<T_user>> DeleteUser(int id_user)
+        /*public async Task<ActionResult<T_user>> DeleteUser(int id_user)
         {
-            var user = await context.t_user.FindAsync(id_user);
+            var user = await _mediator.t_user.FindAsync(id_user);
             if (user == null)
             {
                 return NotFound();
             }
 
-            context.t_user.Remove(user);
-            await context.SaveChangesAsync();
+            _mediator.t_user.Remove(user);
+            await _mediator.SaveChangesAsync();
 
             return user;
         }
 
         private bool UserExists(int id_user)
         {
-            return context.t_user.Any(e => e.id_user == id_user);
-        }
+            return _mediator.t_user.Any(e => e.id_user == id_user);
+        }*/
     }
 }

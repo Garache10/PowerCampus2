@@ -130,3 +130,5 @@ C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.dll
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.pdb
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.genruntimeconfig.cache
+C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\WebAPI\bin\Debug\netcoreapp3.1\MediatR.dll
+C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\WebAPI\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
