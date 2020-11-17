@@ -1,8 +1,12 @@
-﻿using Dominio;
+﻿using Aplicacion.ManejadorError;
+using Dominio;
+using FluentValidation;
 using MediatR;
 using Persistencia;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,6 +23,17 @@ namespace Aplicacion.Users
             public string lastname { get; set; }
             public string email { get; set; }
             public int role_id { get; set; }
+        }
+
+        public class validar : AbstractValidator<newUser>
+        {
+            public validar()
+            {
+                RuleFor(x => x.username).NotEmpty();
+                RuleFor(x => x.password).NotEmpty();
+                RuleFor(x => x.email).NotEmpty();
+                RuleFor(x => x.role_id).NotEmpty();
+            }
         }
 
         public class Manejador: IRequestHandler<newUser>
@@ -48,7 +63,7 @@ namespace Aplicacion.Users
                     return Unit.Value;
                 }
 
-                throw new Exception("cannot add new user");
+                throw new ManejadorExcepcion(HttpStatusCode.BadRequest, new { user = "No se pudo registrar el usuario" });
             }
         }
     }

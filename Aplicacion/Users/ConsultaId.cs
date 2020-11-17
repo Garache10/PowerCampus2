@@ -1,8 +1,10 @@
-﻿using Dominio;
+﻿using Aplicacion.ManejadorError;
+using Dominio;
 using MediatR;
 using Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,6 +29,10 @@ namespace Aplicacion.Users
             public async Task<T_user> Handle(OnlyUser request, CancellationToken cancellationToken)
             {
                 var user = await _context.t_user.FindAsync(request.id_user);
+                if(user == null)
+                {
+                    throw new ManejadorExcepcion(HttpStatusCode.NotFound, new { user = "No se encontró el usuario" });
+                }
                 return user;
             }
         }

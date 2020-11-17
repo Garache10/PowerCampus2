@@ -38,10 +38,6 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
 
-            /*/Código para obtener el rol del usuario
-            var role = await _mediator.t_role.FindAsync(user.role_id);
-            System.Diagnostics.Debug.WriteLine("ROLE: ", role.role);*/
-
             return user;
         }
 
@@ -53,51 +49,21 @@ namespace WebAPI.Controllers
         }
 
         //Modificar un usuario
-        //[HttpPut("{id_user}")]
-        /*public async Task<IActionResult> PutUser(int id_user, T_user user)
+        [HttpPut("{id_user}")]
+        public async Task<ActionResult<Unit>> PutUser(int id_user, Editar.editUser data)
         {
-            if (id_user != user.id_user)
-            {
-                return BadRequest();
-            }
-
-            //_mediator.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                //await _mediator.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id_user))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            data.id_user = id_user;
+            return await _mediator.Send(data);
         }
 
         //Borrar un usuario
         [HttpDelete("{id_user}")]
-        /*public async Task<ActionResult<T_user>> DeleteUser(int id_user)
+        public async Task<ActionResult<Unit>> DeleteUser(int id_user)
         {
-            var user = await _mediator.t_user.FindAsync(id_user);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _mediator.t_user.Remove(user);
-            await _mediator.SaveChangesAsync();
-
-            return user;
+            return await _mediator.Send(new Eliminar.deleteUser { id_user = id_user });
         }
 
+        /*
         private bool UserExists(int id_user)
         {
             return _mediator.t_user.Any(e => e.id_user == id_user);
