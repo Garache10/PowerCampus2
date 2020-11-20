@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aplicacion.Careers;
+using Aplicacion.Login;
 using Aplicacion.Users;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -36,11 +38,25 @@ namespace WebAPI
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            //services from Users
             services.AddMediatR(typeof(Consulta.Manejador).Assembly);
             services.AddMediatR(typeof(ConsultaId.Manejador).Assembly);
             services.AddMediatR(typeof(Agregar.Manejador).Assembly);
             services.AddMediatR(typeof(Editar.Manejador).Assembly);
+            services.AddMediatR(typeof(Eliminar.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Agregar>());
+
+            //services from Login
+            services.AddMediatR(typeof(Log_In.Manejador).Assembly);
+
+            //services from Careers
+            services.AddMediatR(typeof(ConsultaCareer.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaIdCareer.Manejador).Assembly);
+            services.AddMediatR(typeof(AgregarCareer.Manejador).Assembly);
+            services.AddMediatR(typeof(EditarCareer.Manejador).Assembly);
+            services.AddMediatR(typeof(EliminarCareer.Manejador).Assembly);
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarCareer>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

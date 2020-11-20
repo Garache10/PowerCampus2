@@ -62,11 +62,5 @@ namespace WebAPI.Controllers
         {
             return await _mediator.Send(new Eliminar.deleteUser { id_user = id_user });
         }
-
-        /*
-        private bool UserExists(int id_user)
-        {
-            return _mediator.t_user.Any(e => e.id_user == id_user);
-        }*/
     }
 }
