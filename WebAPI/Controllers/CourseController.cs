@@ -1,4 +1,6 @@
-﻿using Dominio;
+﻿using Aplicacion.Courses;
+using Dominio;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistencia;
@@ -13,24 +15,24 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class CourseController: ControllerBase
     {
-        private readonly PowerCampus2Context context;
-        public CourseController(PowerCampus2Context _context)
+        private readonly IMediator _mediator;
+        public CourseController(IMediator mediator)
         {
-            this.context = _context;
+            _mediator = mediator;
         }
 
         //Obtener todos los registros
         [HttpGet]
         public async Task<ActionResult<IEnumerable<T_course>>> GetCourse()
         {
-            return await context.t_course.ToListAsync();
+            return await _mediator.Send(new ConsultaCourse.ListaCourses());
         }
 
         //Obtener por id_course
         [HttpGet("{id_course}")]
         public async Task<ActionResult<T_course>> GetCourse(int id_course)
         {
-            var course = await context.t_course.FindAsync(id_course);
+            var course = await _mediator.Send(new ConsultaIdCourse.OnlyCourse { id_course = id_course });
 
             if (course == null)
             {
@@ -42,63 +44,24 @@ namespace WebAPI.Controllers
 
         //Insertar una carrera
         [HttpPost]
-        public async Task<ActionResult<T_course>> PostCourse(T_course car)
+        public async Task<ActionResult<Unit>> PostCourse(AgregarCourse.newCourse data)
         {
-            context.t_course.Add(car);
-            await context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCourse", new { id = car.id_course }, car);
+            return await _mediator.Send(data);
         }
 
         //Modificar una carrera
         [HttpPut("{id_course}")]
-        public async Task<IActionResult> PutCourse(int id_course, T_course car)
+        public async Task<ActionResult<Unit>> PutCourse(int id_course, EditarCourse.editCourse data)
         {
-            if (id_course != car.id_course)
-            {
-                return BadRequest();
-            }
-
-            context.Entry(car).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CourseExists(id_course))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            data.id_course = id_course;
+            return await _mediator.Send(data);
         }
 
         //Borrar una carrera
         [HttpDelete("{id_course}")]
-        public async Task<ActionResult<T_course>> DeleteCourse(int id_course)
+        public async Task<ActionResult<Unit>> DeleteCourse(int id_course)
         {
-            var course = await context.t_course.FindAsync(id_course);
-            if (course == null)
-            {
-                return NotFound();
-            }
-
-            context.t_course.Remove(course);
-            await context.SaveChangesAsync();
-
-            return course;
-        }
-
-        private bool CourseExists(int id_course)
-        {
-            return context.t_course.Any(e => e.id_course == id_course);
+            return await _mediator.Send(new EliminarCourse.deleteCourse { id_course = id_course });
         }
     }
 }

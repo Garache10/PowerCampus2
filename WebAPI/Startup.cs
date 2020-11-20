@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Aplicacion.Careers;
 using Aplicacion.Login;
 using Aplicacion.Users;
+using Aplicacion.Courses;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -57,6 +58,14 @@ namespace WebAPI
             services.AddMediatR(typeof(EditarCareer.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarCareer.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarCareer>());
+
+            //services from Courses
+            services.AddMediatR(typeof(ConsultaCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaIdCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(AgregarCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(EditarCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(EliminarCourse.Manejador).Assembly);
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarCourse>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
