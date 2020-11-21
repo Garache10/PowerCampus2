@@ -1,4 +1,6 @@
-﻿using Dominio;
+﻿using Aplicacion.Groups;
+using Dominio;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistencia;
@@ -11,25 +13,25 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class GroupController: ControllerBase
+    public class GroupController : ControllerBase
     {
-        private readonly PowerCampus2Context context;
-        public GroupController(PowerCampus2Context _context)
+        private readonly IMediator _mediator;
+        public GroupController(IMediator mediator)
         {
-            this.context = _context;
+            _mediator = mediator;
         }
 
         //Obtener todos los registros
         public async Task<ActionResult<IEnumerable<T_group>>> GetGroup()
         {
-            return await context.t_group.ToListAsync();
+            return await _mediator.Send(new ConsultaGroup.ListaGroups());
         }
 
         //Obtener por id_group
         [HttpGet("{id_group}")]
         public async Task<ActionResult<T_group>> GetGroup(int id_group)
         {
-            var group = await context.t_group.FindAsync(id_group);
+            var group = await _mediator.Send(new ConsultaIdGroup.OnlyGroup { id_group = id_group });
 
             if (group == null)
             {
@@ -41,63 +43,24 @@ namespace WebAPI.Controllers
 
         //Insertar un grupo
         [HttpPost]
-        public async Task<ActionResult<T_group>> PostGroup(T_group group)
+        public async Task<ActionResult<Unit>> PostGroup(AgregarGroup.newGroup data)
         {
-            context.t_group.Add(group);
-            await context.SaveChangesAsync();
-
-            return CreatedAtAction("GetGroup", new { id = group.id_group }, group);
+            return await _mediator.Send(data);
         }
 
         //Modificar un grupo
         [HttpPut("{id_group}")]
-        public async Task<IActionResult> PutGroup(int id_group, T_group group)
+        public async Task<ActionResult<Unit>> PutGroup(int id_group, EditarGroup.editGroup data)
         {
-            if (id_group != group.id_group)
-            {
-                return BadRequest();
-            }
-
-            context.Entry(group).State = EntityState.Modified;
-
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GroupExists(id_group))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            data.id_group = id_group;
+            return await _mediator.Send(data);
         }
 
         //Borrar un grupo
         [HttpDelete("{id_group}")]
-        public async Task<ActionResult<T_group>> DeleteGroup(int id_group)
+        public async Task<ActionResult<Unit>> DeleteGroup(int id_group)
         {
-            var group = await context.t_group.FindAsync(id_group);
-            if (group == null)
-            {
-                return NotFound();
-            }
-
-            context.t_group.Remove(group);
-            await context.SaveChangesAsync();
-
-            return group;
-        }
-
-        private bool GroupExists(int id_group)
-        {
-            return context.t_group.Any(e => e.id_group == id_group);
+            return await _mediator.Send(new EliminarGroup.deleteGroup { id_group = id_group });
         }
     }
 }

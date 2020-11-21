@@ -21,7 +21,7 @@ namespace Aplicacion.Users
             public string firstname { get; set; }
             public string lastname { get; set; }
             public string email { get; set; }
-            //public int role_id { get; set; }
+            public int role_id { get; set; }
         }
 
         public class Manejador : IRequestHandler<editUser>
@@ -46,7 +46,7 @@ namespace Aplicacion.Users
                 user.firstname = request.firstname ?? user.firstname;
                 user.lastname = request.lastname ?? user.lastname;
                 user.email = request.email ?? user.email;
-                //user.role_id = request.role_id ?? user.role_id;
+                user.role_id = request.role_id; //?? user.role_id;
 
                 var valor = await _context.SaveChangesAsync();
                 if (valor > 0)

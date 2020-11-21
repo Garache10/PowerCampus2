@@ -36,6 +36,5 @@ namespace Aplicacion.Users
                 return user;
             }
         }
-
     }
 }

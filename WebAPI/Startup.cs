@@ -19,6 +19,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistencia;
 using WebAPI.Middleware;
+using Aplicacion.Inscriptions;
+using Aplicacion.DetallesInscriptions;
+using Aplicacion.Groups;
 
 namespace WebAPI
 {
@@ -66,6 +69,30 @@ namespace WebAPI
             services.AddMediatR(typeof(EditarCourse.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarCourse.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarCourse>());
+
+            //services from Inscriptions
+            services.AddMediatR(typeof(ConsultaInscription.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaIdInscription.Manejador).Assembly);
+            services.AddMediatR(typeof(AgregarInscription.Manejador).Assembly);
+            services.AddMediatR(typeof(EditarInscription.Manejador).Assembly);
+            services.AddMediatR(typeof(EliminarInscription.Manejador).Assembly);
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarInscription>());
+
+            //services from Groups
+            services.AddMediatR(typeof(ConsultaGroup.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaIdGroup.Manejador).Assembly);
+            services.AddMediatR(typeof(AgregarGroup.Manejador).Assembly);
+            services.AddMediatR(typeof(EditarGroup.Manejador).Assembly);
+            services.AddMediatR(typeof(EliminarGroup.Manejador).Assembly);
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarGroup>());
+
+            //services from DetallesInscriptions
+            services.AddMediatR(typeof(ConsultaDet.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaIdDet.Manejador).Assembly);
+            services.AddMediatR(typeof(AgregarDet.Manejador).Assembly);
+            services.AddMediatR(typeof(EditarDet.Manejador).Assembly);
+            services.AddMediatR(typeof(EliminarDet.Manejador).Assembly);
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarDet>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
