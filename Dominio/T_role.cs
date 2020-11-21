@@ -8,5 +8,6 @@ namespace Dominio
     {
         public int id_role { get; set; }
         public string role { get; set; }
+        //public T_user _t_user { get; set; }
     }
 }
