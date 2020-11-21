@@ -13,5 +13,6 @@ namespace Dominio
         public string lastname { get; set; }
         public string email { get; set; }
         public int role_id { get; set; }
+        public int nada { get; set; }
     }
 }
