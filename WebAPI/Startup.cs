@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Aplicacion.Careers;
 using Aplicacion.Login;
-using Aplicacion.Users;
 using Aplicacion.Courses;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -15,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistencia;
@@ -22,6 +22,9 @@ using WebAPI.Middleware;
 using Aplicacion.Inscriptions;
 using Aplicacion.DetallesInscriptions;
 using Aplicacion.Groups;
+using Dominio;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
 
 namespace WebAPI
 {
@@ -43,13 +46,13 @@ namespace WebAPI
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            //services from Users
+            /*/services from Users
             services.AddMediatR(typeof(Consulta.Manejador).Assembly);
             services.AddMediatR(typeof(ConsultaId.Manejador).Assembly);
             services.AddMediatR(typeof(Agregar.Manejador).Assembly);
             services.AddMediatR(typeof(Editar.Manejador).Assembly);
             services.AddMediatR(typeof(Eliminar.Manejador).Assembly);
-            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Agregar>());
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Agregar>());*/
 
             //services from Login
             services.AddMediatR(typeof(Log_In.Manejador).Assembly);
@@ -93,6 +96,14 @@ namespace WebAPI
             services.AddMediatR(typeof(EditarDet.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarDet.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarDet>());
+
+            //services from Identity
+            var builder = services.AddIdentityCore<T_user>();
+            var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+
+            identityBuilder.AddEntityFrameworkStores<PowerCampus2Context>();
+            identityBuilder.AddSignInManager<SignInManager<T_user>>();
+            services.TryAddSingleton<ISystemClock, SystemClock>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

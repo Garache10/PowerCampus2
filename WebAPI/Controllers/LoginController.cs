@@ -2,6 +2,7 @@
 using Dominio;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +10,14 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class LoginController : ControllerBase
+    public class LoginController : IControllerBase_
     {
-        private readonly IMediator _mediator;
-
-        public LoginController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         //Logeo de usuario
-        [HttpGet("{username}/{password}")]
-        public async Task<ActionResult<T_user>> LogUser(string username, string password)
+        [HttpPost]
+        public async Task<ActionResult<DataUsuarioFront>> Login_(Log_In.Logeo parametros)
         {
-            var log = await _mediator.Send(new Log_In.Logeo { username = username, password = password });
-            if (log == null)
-            {
-                return NotFound();
-            }
-            return log;
+            return await Mediator.Send(parametros);
         }
     }
 }
