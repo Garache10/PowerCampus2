@@ -15,7 +15,7 @@ namespace Aplicacion.Login
 {
     public class Log_In
     {
-        public class Logeo : IRequest<T_user>
+        public class Logeo : IRequest<DataUsuarioFront>
         {
             public string username { get; set; }
             public string password { get; set; }
@@ -30,7 +30,7 @@ namespace Aplicacion.Login
             }
         }
 
-        public class Manejador : IRequestHandler<Logeo, T_user>
+        public class Manejador : IRequestHandler<Logeo, DataUsuarioFront>
         {
             private readonly UserManager<T_user> _userManager;
             private readonly SignInManager<T_user> _signInManager;
@@ -41,7 +41,7 @@ namespace Aplicacion.Login
                 _signInManager = signInManager;
             }
 
-            public async Task<T_user> Handle(Logeo request, CancellationToken cancellationToken)
+            public async Task<DataUsuarioFront> Handle(Logeo request, CancellationToken cancellationToken)
             {
                 var usuario = await _userManager.FindByNameAsync(request.username);
                 if (usuario == null)
@@ -52,18 +52,17 @@ namespace Aplicacion.Login
                 var resultado = await _signInManager.CheckPasswordSignInAsync(usuario, request.password, false);
                 if (resultado.Succeeded)
                 {
-                    return new T_user
+                    return new DataUsuarioFront
                     {
-
                         Id = usuario.Id,
-                        UserName = usuario.UserName,
+                        username = usuario.UserName,
                         firstname = usuario.firstname,
                         lastname = usuario.lastname,
-                        Email = usuario.Email
+                        email = usuario.Email
                     };
                 }
 
-                throw new ManejadorExcepcion(HttpStatusCode.Unauthorized);
+                throw new ManejadorExcepcion(HttpStatusCode.Unauthorized, new { login = "Credenciales incorrectas"});
             }            
         }
     }

@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
     {
         //Logeo de usuario
         [HttpPost]
-        public async Task<ActionResult<T_user>> Login_(Log_In.Logeo parametros)
+        public async Task<ActionResult<DataUsuarioFront>> Login_(Log_In.Logeo parametros)
         {
             return await Mediator.Send(parametros);
         }
