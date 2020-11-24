@@ -1,6 +1,8 @@
 ﻿using Aplicacion.ManejadorError;
 using Dominio;
+using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Persistencia;
 using System;
 using System.Collections.Generic;
@@ -15,38 +17,54 @@ namespace Aplicacion.Login
     {
         public class Logeo : IRequest<T_user>
         {
-            public int id_user { get; set; }
             public string username { get; set; }
             public string password { get; set; }
-            public string firstname { get; set; }
-            public string lastname { get; set; }
-            public string email { get; set; }
-            public int role_id { get; set; }
+        }
+
+        public class EjecutaValidacion : AbstractValidator<Logeo>
+        {
+            public EjecutaValidacion()
+            {
+                RuleFor(x => x.username).NotEmpty();
+                RuleFor(x => x.password).NotEmpty();
+            }
         }
 
         public class Manejador : IRequestHandler<Logeo, T_user>
         {
-            private readonly PowerCampus2Context context;
+            private readonly UserManager<T_user> _userManager;
+            private readonly SignInManager<T_user> _signInManager;
 
-            public Manejador(PowerCampus2Context _context)
+            public Manejador(UserManager<T_user> userManager, SignInManager<T_user> signInManager)
             {
-                context = _context;
+                _userManager = userManager;
+                _signInManager = signInManager;
             }
 
             public async Task<T_user> Handle(Logeo request, CancellationToken cancellationToken)
             {
-                var user = await context.t_user.FindAsync(request.username);
-                var pass = request.password;
-                if (user == null)
+                var usuario = await _userManager.FindByNameAsync(request.username);
+                if (usuario == null)
                 {
-                    throw new ManejadorExcepcion(HttpStatusCode.NotFound, new { login = "Credenciales incorrectas" });
+                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized);
                 }
-                else if (user.password != pass)
+
+                var resultado = await _signInManager.CheckPasswordSignInAsync(usuario, request.password, false);
+                if (resultado.Succeeded)
                 {
-                    throw new ManejadorExcepcion(HttpStatusCode.NotFound, new { user = "Credenciales incorrectas" });
+                    return new T_user
+                    {
+
+                        Id = usuario.Id,
+                        UserName = usuario.UserName,
+                        firstname = usuario.firstname,
+                        lastname = usuario.lastname,
+                        Email = usuario.Email
+                    };
                 }
-                return user;
-            }
+
+                throw new ManejadorExcepcion(HttpStatusCode.Unauthorized);
+            }            
         }
     }
 }

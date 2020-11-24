@@ -18,7 +18,7 @@ namespace Aplicacion.Courses
             public string course { get; set; }
             public DateTime time_schedule { get; set; }
             public int career_id { get; set; }
-            public int teacher_id { get; set; }
+            public Guid teacher_id { get; set; }
         }
 
         public class Manejador : IRequestHandler<editCourse>

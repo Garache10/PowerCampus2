@@ -17,7 +17,7 @@ namespace Aplicacion.Inscriptions
         public class newInscription : IRequest
         {
             public DateTime inscription_day { get; set; }
-            public int user_id { get; set; }
+            public Guid user_id { get; set; }
             public int status { get; set; }
         }
 

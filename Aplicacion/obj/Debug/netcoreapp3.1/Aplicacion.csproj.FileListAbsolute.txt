@@ -22,7 +22,7 @@ C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.csprojAssemblyReference.cache
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.AssemblyInfoInputs.cache
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.AssemblyInfo.cs
+C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.csproj.CoreCompileInputs.cache
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.csproj.CopyComplete
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.dll
 C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.pdb
-C:\Users\José Ángel Garache\Documents\Visual Studio 2019\Projects\PowerCampus2\Aplicacion\obj\Debug\netcoreapp3.1\Aplicacion.csproj.CoreCompileInputs.cache
