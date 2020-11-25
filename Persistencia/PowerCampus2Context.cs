@@ -17,6 +17,7 @@ namespace Persistencia
         protected override void OnModelCreating (ModelBuilder modelbuilder)
         {
             base.OnModelCreating(modelbuilder);
+            modelbuilder.Entity<T_user>().HasKey(tr => new { tr.Id });
             modelbuilder.Entity<T_career>().HasKey(tr => new { tr.id_career });
             modelbuilder.Entity<T_course>().HasKey(tr => new { tr.id_course });
             modelbuilder.Entity<T_group>().HasKey(tr => new { tr.id_group });

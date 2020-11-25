@@ -26,7 +26,6 @@ namespace Aplicacion.Users
 
         public class Manejador : IRequestHandler<editUser>
         {
-            //private readonly PowerCampus2Context _context;
             private readonly UserManager<T_user> _userManager;
             public Manejador(UserManager<T_user> userManager)
             {

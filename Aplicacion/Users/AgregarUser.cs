@@ -38,7 +38,6 @@ namespace Aplicacion.Users
 
         public class Manejador : IRequestHandler<newUser>
         {
-            //private readonly PowerCampus2Context _context;
             private readonly UserManager<T_user> _userManager;
             public Manejador(UserManager<T_user> userManager)
             {
@@ -48,14 +47,13 @@ namespace Aplicacion.Users
             public async Task<Unit> Handle(newUser request, CancellationToken cancellationToken)
             {
                 var user = new T_user
-                {
-                    UserName = request.username,
-                    PasswordHash = request.password,
+                {                   
                     firstname = request.firstname,
                     lastname = request.lastname,
+                    UserName = request.username,
                     Email = request.email
                 };
-                var valor = await _userManager.CreateAsync(user);
+                var valor = await _userManager.CreateAsync(user, request.password);
 
                 if (valor.Succeeded)
                 {
