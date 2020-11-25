@@ -46,7 +46,7 @@ namespace Aplicacion.Login
                 var usuario = await _userManager.FindByNameAsync(request.username);
                 if (usuario == null)
                 {
-                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized);
+                    throw new ManejadorExcepcion(HttpStatusCode.Unauthorized, new { login = "Credenciales incorrectas" });
                 }
 
                 var resultado = await _signInManager.CheckPasswordSignInAsync(usuario, request.password, false);
