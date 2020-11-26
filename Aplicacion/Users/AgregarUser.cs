@@ -32,7 +32,7 @@ namespace Aplicacion.Users
                 RuleFor(x => x.username).NotEmpty();
                 RuleFor(x => x.password).NotEmpty();
                 RuleFor(x => x.email).NotEmpty();
-                //RuleFor(x => x.role).NotEmpty();
+                RuleFor(x => x.role).NotEmpty();
             }
         }
 
@@ -52,7 +52,8 @@ namespace Aplicacion.Users
                     firstname = request.firstname,
                     lastname = request.lastname,
                     UserName = request.username,
-                    Email = request.email
+                    Email = request.email,
+                    role = request.role
                 };
                 var valor = await _userManager.CreateAsync(user, pass);
 

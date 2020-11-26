@@ -58,7 +58,8 @@ namespace Aplicacion.Login
                         username = usuario.UserName,
                         firstname = usuario.firstname,
                         lastname = usuario.lastname,
-                        email = usuario.Email
+                        email = usuario.Email,
+                        role = usuario.role
                     };
                 }
 

@@ -9,5 +9,6 @@ namespace Dominio
     {
         public string firstname { get; set; }
         public string lastname { get; set; }
+        public int role { get; set; }
     }
 }

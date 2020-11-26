@@ -46,7 +46,7 @@ namespace Aplicacion.Users
                 user.firstname = request.firstname ?? user.firstname;
                 user.lastname = request.lastname ?? user.lastname;
                 user.Email = request.email ?? user.Email;
-                //user.role = request.role; //?? user.role_id;
+                user.role = request.role; //?? user.role_id;
 
                 var valor = await _userManager.UpdateAsync(user);
                 if (valor.Succeeded)
