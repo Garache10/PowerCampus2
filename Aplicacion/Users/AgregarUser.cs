@@ -46,6 +46,7 @@ namespace Aplicacion.Users
 
             public async Task<Unit> Handle(newUser request, CancellationToken cancellationToken)
             {
+                var pass = request.password;
                 var user = new T_user
                 {                   
                     firstname = request.firstname,
@@ -53,7 +54,7 @@ namespace Aplicacion.Users
                     UserName = request.username,
                     Email = request.email
                 };
-                var valor = await _userManager.CreateAsync(user, request.password);
+                var valor = await _userManager.CreateAsync(user, pass);
 
                 if (valor.Succeeded)
                 {
