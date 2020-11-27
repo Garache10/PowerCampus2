@@ -25,6 +25,7 @@ using Aplicacion.Groups;
 using Dominio;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
+using Aplicacion.Users;
 
 namespace WebAPI
 {
@@ -46,13 +47,13 @@ namespace WebAPI
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            /*/services from Users
-            services.AddMediatR(typeof(Consulta.Manejador).Assembly);
-            services.AddMediatR(typeof(ConsultaId.Manejador).Assembly);
-            services.AddMediatR(typeof(Agregar.Manejador).Assembly);
-            services.AddMediatR(typeof(Editar.Manejador).Assembly);
-            services.AddMediatR(typeof(Eliminar.Manejador).Assembly);
-            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Agregar>());*/
+            //services from Users
+            services.AddMediatR(typeof(ConsultaUser.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaIdUser.Manejador).Assembly);
+            services.AddMediatR(typeof(AgregarUser.Manejador).Assembly);
+            services.AddMediatR(typeof(EditarUser.Manejador).Assembly);
+            services.AddMediatR(typeof(EliminarUser.Manejador).Assembly);
+            services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarUser>());
 
             //services from Login
             services.AddMediatR(typeof(Log_In.Manejador).Assembly);
