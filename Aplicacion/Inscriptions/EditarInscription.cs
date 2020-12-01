@@ -16,7 +16,7 @@ namespace Aplicacion.Inscriptions
         {
             public int id_inscription { get; set; }
             public DateTime inscription_day { get; set; }
-            public Guid user_id { get; set; }
+            public string user_id { get; set; }
             public int status { get; set; }
         }
 
@@ -38,7 +38,7 @@ namespace Aplicacion.Inscriptions
                 }
 
                 inscription.inscription_day = request.inscription_day; //?? inscription.inscription_day;
-                inscription.user_id = request.user_id; //?? inscription.user_id;
+                inscription.user_id = request.user_id ?? inscription.user_id;
                 inscription.status = request.status; //?? inscription.status;
 
                 var valor = await _context.SaveChangesAsync();

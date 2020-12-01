@@ -30,13 +30,22 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<T_det_inscription>> GetDetInscription(int id_det_inscription)
         {
             var det = await _mediator.Send(new ConsultaIdDet.OnlyDet { id_det_inscription = id_det_inscription });
-
             if (det == null)
             {
                 return NotFound();
             }
-
             return det;
+        }
+
+        [HttpGet("classes/{inscription_id}")]
+        public async Task<ActionResult<IEnumerable<T_det_inscription>>> GetDetByInscription(int inscription_id)
+        {
+            var classes = await _mediator.Send(new ConsultaDetailsByInscription.DetailsByInscription { inscription_id = inscription_id });
+            if (classes == null)
+            {
+                return NotFound();
+            }
+            return classes;
         }
 
         //Insertar un detalle

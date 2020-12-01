@@ -18,7 +18,7 @@ namespace Aplicacion.Courses
             public string course { get; set; }
             public DateTime time_schedule { get; set; }
             public int career_id { get; set; }
-            public Guid teacher_id { get; set; }
+            public string teacher_id { get; set; }
         }
 
         public class Manejador : IRequestHandler<editCourse>
@@ -39,9 +39,7 @@ namespace Aplicacion.Courses
                 }
 
                 course.course = request.course ?? course.course;
-                /*course.time_schedule = request.time_schedule ?? course.time_schedule;
-                course.career_id = request.career_id ?? course.career_id;
-                course.teacher_id = request.teacher_id ?? course.teacher_id;*/
+                course.career_id = request.career_id;// ?? course.career_id;
 
                 var valor = await _context.SaveChangesAsync();
                 if (valor > 0)

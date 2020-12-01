@@ -9,5 +9,6 @@ namespace Dominio
         public int id_group { get; set; }
         public int course_id { get; set; }
         public int quota { get; set; }
+        public string teacher_id { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.Views;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,14 +8,14 @@ using System.Text;
 
 namespace Persistencia
 {
-    public class PowerCampus2Context:IdentityDbContext<T_user>
+    public class PowerCampus2Context : IdentityDbContext<T_user>
     {
-        public PowerCampus2Context(DbContextOptions options): base(options)
+        public PowerCampus2Context(DbContextOptions options) : base(options)
         {
 
         }
 
-        protected override void OnModelCreating (ModelBuilder modelbuilder)
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             base.OnModelCreating(modelbuilder);
             modelbuilder.Entity<T_user>().HasKey(tr => new { tr.Id });
@@ -36,5 +37,8 @@ namespace Persistencia
         public DbSet<T_group> t_group { get; set; }
         public DbSet<T_inscription> t_inscription { get; set; }
         public DbSet<T_det_inscription> t_det_inscription { get; set; }
+
+        //DbSet of views
+        public DbSet<V_estudiantesByGroup> v_estudiantesByGroup { get; set; }
     }
 }

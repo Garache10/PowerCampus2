@@ -18,6 +18,7 @@ namespace Aplicacion.Groups
         {
             public int course_id { get; set; }
             public int quota { get; set; }
+            public string teacher_id { get; set; }
         }
 
         public class validar : AbstractValidator<newGroup>
@@ -42,7 +43,8 @@ namespace Aplicacion.Groups
                 var group = new T_group
                 {
                     course_id = request.course_id,
-                    quota = request.quota
+                    quota = request.quota,
+                    teacher_id = request.teacher_id
                 };
 
                 _context.t_group.Add(group);

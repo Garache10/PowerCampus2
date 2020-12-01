@@ -8,7 +8,7 @@ namespace Dominio
     {
         public int id_inscription { get; set; }
         public DateTime inscription_day { get; set; }
-        public Guid user_id { get; set; }
+        public string user_id { get; set; }
         public int status { get; set; }
     }
 }
