@@ -17,7 +17,7 @@ namespace Aplicacion.Inscriptions
         public class newInscription : IRequest
         {
             public DateTime inscription_day { get; set; }
-            public Guid user_id { get; set; }
+            public string user_id { get; set; }
             public int status { get; set; }
         }
 
@@ -25,7 +25,7 @@ namespace Aplicacion.Inscriptions
         {
             public validar()
             {
-                RuleFor(x => x.inscription_day).NotEmpty();
+                //RuleFor(x => x.inscription_day).NotEmpty();
                 RuleFor(x => x.user_id).NotEmpty();
                 RuleFor(x => x.status).NotEmpty();
             }

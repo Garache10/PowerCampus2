@@ -17,9 +17,7 @@ namespace Aplicacion.Courses
         public class newCourse : IRequest
         {
             public string course { get; set; }
-            public DateTime time_schedule { get; set; }
             public int career_id { get; set; }
-            public Guid teacher_id { get; set; }
         }
 
         public class validar : AbstractValidator<newCourse>
@@ -28,7 +26,6 @@ namespace Aplicacion.Courses
             {
                 RuleFor(x => x.course).NotEmpty();
                 RuleFor(x => x.career_id).NotEmpty();
-                //RuleFor(x => x.teacher_id).NotEmpty();
             }
         }
 
@@ -45,9 +42,7 @@ namespace Aplicacion.Courses
                 var course = new T_course
                 {
                     course = request.course,
-                    time_schedule = request.time_schedule,
                     career_id = request.career_id,
-                    teacher_id = request.teacher_id
                 };
 
                 _context.t_course.Add(course);

@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Groups;
 using Dominio;
+using Dominio.Views;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,40 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
 
+            return group;
+        }
+
+        [HttpGet("GroupBy/{teacher_id}")]
+        public async Task<ActionResult<IEnumerable<T_group>>> GetGroup(string teacher_id)
+        {
+            teacher_id = (string)this.RouteData.Values["teacher_id"];
+            var group = await _mediator.Send(new ConsultaGroupsByTeacher.GroupsByTeacher { teacher_id = teacher_id });
+            if (group == null)
+            {
+                return NotFound();
+            }
+            return group;
+        }
+
+        /*[HttpGet("EstudiantesByGroup/{group_id}")]
+        public async Task<ActionResult<IEnumerable<T_det_inscription>>> GetEstudiantesByGroup(int group_id)
+        {
+            var group = await _mediator.Send(new EstudiantesByGroup.ListEstudiantesByGroup { group_id = group_id });
+            if (group == null)
+            {
+                return NotFound();
+            }
+            return group;
+        }*/
+
+        [HttpGet("EstudiantesByGroup/{group_id}")]
+        public async Task<ActionResult<IEnumerable<V_estudiantesByGroup>>> GetEstudiantesByGroup_v(int group_id)
+        {
+            var group = await _mediator.Send(new EstudiantesByGroup_v.estudiantes_v { id_group = group_id });
+            if (group == null)
+            {
+                return NotFound();
+            }
             return group;
         }
 

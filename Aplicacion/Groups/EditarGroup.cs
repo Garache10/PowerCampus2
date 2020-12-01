@@ -17,6 +17,7 @@ namespace Aplicacion.Groups
             public int id_group { get; set; }
             public int course_id { get; set; }
             public int quota { get; set; }
+            public string teacher_id { get; set; }
         }
 
         public class Manejador : IRequestHandler<editGroup>
@@ -38,6 +39,7 @@ namespace Aplicacion.Groups
 
                 group.course_id = request.course_id; //?? group.course_id;
                 group.quota = request.quota; //?? group.quota;
+                group.teacher_id = request.teacher_id ?? group.teacher_id;
 
                 var valor = await _context.SaveChangesAsync();
                 if (valor > 0)

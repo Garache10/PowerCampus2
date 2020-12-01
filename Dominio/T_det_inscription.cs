@@ -8,6 +8,6 @@ namespace Dominio
     {
         public int id_det_inscription { get; set; }
         public int inscription_id { get; set; }
-        public int course_id { get; set; }
+        public int group_id { get; set; }
     }
 }

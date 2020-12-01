@@ -17,14 +17,14 @@ namespace Aplicacion.DetallesInscriptions
         public class newDet : IRequest
         {
             public int inscription_id { get; set; }
-            public int course_id { get; set; }
+            public int group_id { get; set; }
         }
 
         public class validar : AbstractValidator<newDet>
         {
             public validar()
             {
-                RuleFor(x => x.course_id).NotEmpty();
+                RuleFor(x => x.group_id).NotEmpty();
                 RuleFor(x => x.inscription_id).NotEmpty();
             }
         }
@@ -41,7 +41,7 @@ namespace Aplicacion.DetallesInscriptions
             {
                 var det = new T_det_inscription
                 {
-                    course_id = request.course_id,
+                    group_id = request.group_id,
                     inscription_id = request.inscription_id
                 };
 

@@ -88,6 +88,8 @@ namespace WebAPI
             services.AddMediatR(typeof(AgregarGroup.Manejador).Assembly);
             services.AddMediatR(typeof(EditarGroup.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarGroup.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaGroupsByTeacher.Manejador).Assembly);
+            services.AddMediatR(typeof(EstudiantesByGroup.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarGroup>());
 
             //services from DetallesInscriptions
@@ -96,6 +98,7 @@ namespace WebAPI
             services.AddMediatR(typeof(AgregarDet.Manejador).Assembly);
             services.AddMediatR(typeof(EditarDet.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarDet.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaDetailsByInscription.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarDet>());
 
             //services from Identity
