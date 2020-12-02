@@ -24,11 +24,7 @@ namespace Persistencia
             modelbuilder.Entity<T_group>().HasKey(tr => new { tr.id_group });
             modelbuilder.Entity<T_inscription>().HasKey(tr => new { tr.id_inscription });
             modelbuilder.Entity<T_det_inscription>().HasKey(tr => new { tr.id_det_inscription });
-            /*modelbuilder.Entity<T_user>(entity =>
-            {
-                entity.HasKey(e => e.id_user);
-                entity.HasAlternateKey(e => e.username);
-            });*/
+            modelbuilder.Entity<V_cursos>().HasKey(tr => new { tr.id_course });
         }
 
         public DbSet<T_user> t_user { get; set; }
@@ -40,5 +36,6 @@ namespace Persistencia
 
         //DbSet of views
         public DbSet<V_estudiantesByGroup> v_estudiantesByGroup { get; set; }
+        public DbSet<V_cursos> v_cursos { get; set; }
     }
 }

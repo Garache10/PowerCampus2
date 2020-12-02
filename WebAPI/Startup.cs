@@ -72,6 +72,7 @@ namespace WebAPI
             services.AddMediatR(typeof(AgregarCourse.Manejador).Assembly);
             services.AddMediatR(typeof(EditarCourse.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaCourses_v.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarCourse>());
 
             //services from Inscriptions
