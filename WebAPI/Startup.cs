@@ -91,6 +91,8 @@ namespace WebAPI
             services.AddMediatR(typeof(EliminarGroup.Manejador).Assembly);
             services.AddMediatR(typeof(ConsultaGroupsByTeacher.Manejador).Assembly);
             services.AddMediatR(typeof(EstudiantesByGroup.Manejador).Assembly);
+            services.AddMediatR(typeof(GroupByCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(HorarioByGroup.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarGroup>());
 
             //services from DetallesInscriptions
