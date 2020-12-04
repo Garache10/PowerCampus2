@@ -128,7 +128,7 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<IEnumerable<T_horario>>> GetHorarioByGroup(int id_group)
         {
             var Horario = await _mediator.Send(new HorarioByGroup.horarioPorGrupo { id_group = id_group });
-            if(Horario == null)
+            if (Horario == null)
             {
                 return NotFound();
             }
@@ -136,6 +136,25 @@ namespace WebAPI.Controllers
         }
 
         //Agregar horario a un grupo
-        
+        [HttpPost("horario")]
+        public async Task<ActionResult<Unit>> PostHorario(AgregarHorario.newHorario data)
+        {
+            return await _mediator.Send(data);
+        }
+
+        //Modificar horario de un grupo
+        [HttpPut("horario/{id_horario}")]
+        public async Task<ActionResult<Unit>> PutHorario(int id_horario, EditarHorario.editHorario data)
+        {
+            data.id_horario = id_horario;
+            return await _mediator.Send(data);
+        }
+
+        //Eliminar un horario
+        [HttpDelete("horario/{id_horario}")]
+        public async Task<ActionResult<Unit>> DeleteHorario(int id_horario)
+        {
+            return await _mediator.Send(new EliminarHorario.deleteHorario { id_horario = id_horario });
+        }
     }
 }
