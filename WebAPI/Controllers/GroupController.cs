@@ -42,8 +42,31 @@ namespace WebAPI.Controllers
             return group;
         }
 
+        [HttpGet("GroupByCourse/{id_course}")]
+        public async Task<ActionResult<List<T_group>>> GetGroupByCourse(int id_course)
+        {
+            var group = await _mediator.Send(new GroupByCourse.GrupoPorCurso { course_id = id_course });
+            if (group == null)
+            {
+                return NotFound();
+            }
+            return group;
+        }
+
         [HttpGet("GroupBy/{teacher_id}")]
-        public async Task<ActionResult<IEnumerable<T_group>>> GetGroup(string teacher_id)
+        public async Task<ActionResult<IEnumerable<V_groupsForTeacher>>> GetGroup(string teacher_id)
+        {
+            teacher_id = (string)this.RouteData.Values["teacher_id"];
+            var group = await _mediator.Send(new GruposPorDocente.GroupsForTeacher { teacher_id = teacher_id });
+            if (group == null)
+            {
+                return NotFound();
+            }
+            return group;
+        }
+
+        [HttpGet("GroupByT/{teacher_id}")]
+        public async Task<ActionResult<IEnumerable<T_group>>> GetGroupT(string teacher_id)
         {
             teacher_id = (string)this.RouteData.Values["teacher_id"];
             var group = await _mediator.Send(new ConsultaGroupsByTeacher.GroupsByTeacher { teacher_id = teacher_id });
@@ -54,7 +77,8 @@ namespace WebAPI.Controllers
             return group;
         }
 
-        /*[HttpGet("EstudiantesByGroup/{group_id}")]
+        //Obtener los estudiantes de un grupo pero solo con id 
+        [HttpGet("EstudiantesByGroupT/{group_id}")]
         public async Task<ActionResult<IEnumerable<T_det_inscription>>> GetEstudiantesByGroup(int group_id)
         {
             var group = await _mediator.Send(new EstudiantesByGroup.ListEstudiantesByGroup { group_id = group_id });
@@ -63,8 +87,9 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
             return group;
-        }*/
+        }
 
+        //Obtener los estudiantes de un grupo con vista
         [HttpGet("EstudiantesByGroup/{group_id}")]
         public async Task<ActionResult<IEnumerable<V_estudiantesByGroup>>> GetEstudiantesByGroup_v(int group_id)
         {
@@ -96,6 +121,40 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<Unit>> DeleteGroup(int id_group)
         {
             return await _mediator.Send(new EliminarGroup.deleteGroup { id_group = id_group });
+        }
+
+        //Obtener el horario de un grupo
+        [HttpGet("horario/{id_group}")]
+        public async Task<ActionResult<IEnumerable<T_horario>>> GetHorarioByGroup(int id_group)
+        {
+            var Horario = await _mediator.Send(new HorarioByGroup.horarioPorGrupo { id_group = id_group });
+            if (Horario == null)
+            {
+                return NotFound();
+            }
+            return Horario;
+        }
+
+        //Agregar horario a un grupo
+        [HttpPost("horario")]
+        public async Task<ActionResult<Unit>> PostHorario(AgregarHorario.newHorario data)
+        {
+            return await _mediator.Send(data);
+        }
+
+        //Modificar horario de un grupo
+        [HttpPut("horario/{id_horario}")]
+        public async Task<ActionResult<Unit>> PutHorario(int id_horario, EditarHorario.editHorario data)
+        {
+            data.id_horario = id_horario;
+            return await _mediator.Send(data);
+        }
+
+        //Eliminar un horario
+        [HttpDelete("horario/{id_horario}")]
+        public async Task<ActionResult<Unit>> DeleteHorario(int id_horario)
+        {
+            return await _mediator.Send(new EliminarHorario.deleteHorario { id_horario = id_horario });
         }
     }
 }

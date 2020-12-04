@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Courses;
 using Dominio;
+using Dominio.Views;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +24,9 @@ namespace WebAPI.Controllers
 
         //Obtener todos los registros
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<T_course>>> GetCourse()
+        public async Task<ActionResult<IEnumerable<V_cursos>>> GetCourse()
         {
-            return await _mediator.Send(new ConsultaCourse.ListaCourses());
+            return await _mediator.Send(new ConsultaCourses_v.ListaCursos_v());
         }
 
         //Obtener por id_course

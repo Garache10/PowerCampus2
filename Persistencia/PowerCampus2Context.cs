@@ -24,21 +24,24 @@ namespace Persistencia
             modelbuilder.Entity<T_group>().HasKey(tr => new { tr.id_group });
             modelbuilder.Entity<T_inscription>().HasKey(tr => new { tr.id_inscription });
             modelbuilder.Entity<T_det_inscription>().HasKey(tr => new { tr.id_det_inscription });
-            /*modelbuilder.Entity<T_user>(entity =>
-            {
-                entity.HasKey(e => e.id_user);
-                entity.HasAlternateKey(e => e.username);
-            });*/
+            modelbuilder.Entity<T_horario>().HasKey(tr => new { tr.id_horario });
+            modelbuilder.Entity<V_cursos>().HasKey(tr => new { tr.id_course });
+            modelbuilder.Entity<V_groupsForTeacher>().HasKey(tr => new { tr.id_group });
+            
         }
 
+        //DbSet of tables
         public DbSet<T_user> t_user { get; set; }
         public DbSet<T_career> t_career { get; set; }
         public DbSet<T_course> t_course { get; set; }
         public DbSet<T_group> t_group { get; set; }
         public DbSet<T_inscription> t_inscription { get; set; }
         public DbSet<T_det_inscription> t_det_inscription { get; set; }
+        public DbSet<T_horario> t_horario { get; set; }
 
         //DbSet of views
         public DbSet<V_estudiantesByGroup> v_estudiantesByGroup { get; set; }
+        public DbSet<V_cursos> v_cursos { get; set; }
+        public DbSet<V_groupsForTeacher> v_groupsForTeacher { get; set; }
     }
 }
