@@ -81,6 +81,7 @@ namespace WebAPI
             services.AddMediatR(typeof(AgregarInscription.Manejador).Assembly);
             services.AddMediatR(typeof(EditarInscription.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarInscription.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaInscriptionByUser.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarInscription>());
 
             //services from Groups

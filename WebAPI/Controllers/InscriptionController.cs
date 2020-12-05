@@ -41,6 +41,19 @@ namespace WebAPI.Controllers
             return inscription;
         }
 
+        //Obtener inscripcion por user_id
+        [HttpGet("user/{user_id}")]
+        public async Task<ActionResult<List<T_inscription>>> GetInscriptionByUser(string user_id)
+        {
+            user_id = (string)this.RouteData.Values["user_id"];
+            var inscription = await _mediator.Send(new ConsultaInscriptionByUser.insByUser { user_id = user_id });
+            if (inscription == null)
+            {
+                return NotFound();
+            }
+            return inscription;
+        }
+
         //Insertar un usuario
         [HttpPost]
         public async Task<ActionResult<Unit>> PostInscription(AgregarInscription.newInscription data)

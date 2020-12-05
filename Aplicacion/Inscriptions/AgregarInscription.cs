@@ -16,7 +16,6 @@ namespace Aplicacion.Inscriptions
     {
         public class newInscription : IRequest
         {
-            public DateTime inscription_day { get; set; }
             public string user_id { get; set; }
             public int status { get; set; }
         }
@@ -25,7 +24,6 @@ namespace Aplicacion.Inscriptions
         {
             public validar()
             {
-                //RuleFor(x => x.inscription_day).NotEmpty();
                 RuleFor(x => x.user_id).NotEmpty();
                 RuleFor(x => x.status).NotEmpty();
             }
@@ -41,9 +39,11 @@ namespace Aplicacion.Inscriptions
 
             public async Task<Unit> Handle(newInscription request, CancellationToken cancellationToken)
             {
+                DateTime thisDay = DateTime.Today;
+
                 var inscription = new T_inscription
                 {
-                    inscription_day = request.inscription_day,
+                    inscription_day = thisDay,
                     user_id = request.user_id,
                     status = request.status
                 };
