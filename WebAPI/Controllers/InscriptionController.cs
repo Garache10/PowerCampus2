@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
 
         //Obtener inscripcion por user_id
         [HttpGet("user/{user_id}")]
-        public async Task<ActionResult<List<T_inscription>>> GetInscriptionByUser(string user_id)
+        public async Task<ActionResult<T_inscription>> GetInscriptionByUser(string user_id)
         {
             user_id = (string)this.RouteData.Values["user_id"];
             var inscription = await _mediator.Send(new ConsultaInscriptionByUser.insByUser { user_id = user_id });
@@ -52,6 +52,19 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
             return inscription;
+        }
+
+        //Verificar inscripcion por user_id
+        [HttpGet("userVerify/{user_id}")]
+        public async Task<ActionResult<Boolean>> VerifyInscriptionByUser(string user_id)
+        {
+            user_id = (string)this.RouteData.Values["user_id"];
+            var inscription = await _mediator.Send(new ConsultaInscriptionByUser.insByUser { user_id = user_id });
+            if (inscription == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         //Insertar un usuario
