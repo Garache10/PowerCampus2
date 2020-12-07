@@ -42,10 +42,23 @@ namespace WebAPI.Controllers
             return group;
         }
 
-        [HttpGet("GroupByCourse/{id_course}")]
+        //Obtener grupos por curso
+        [HttpGet("GroupByCourseT/{id_course}")]
         public async Task<ActionResult<List<T_group>>> GetGroupByCourse(int id_course)
         {
             var group = await _mediator.Send(new GroupByCourse.GrupoPorCurso { course_id = id_course });
+            if (group == null)
+            {
+                return NotFound();
+            }
+            return group;
+        }
+
+        //Obtener grupos por curso en vista
+        [HttpGet("GroupByCourse/{id_course}")]
+        public async Task<ActionResult<List<V_groupsByCourse>>> GetGroupByCourseV(int id_course)
+        {
+            var group = await _mediator.Send(new GroupsByCourse_v.GrupoPorCursoV { course_id = id_course });
             if (group == null)
             {
                 return NotFound();
