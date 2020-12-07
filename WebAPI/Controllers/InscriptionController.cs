@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Inscriptions;
 using Dominio;
+using Dominio.Views;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -87,6 +88,18 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<Unit>> DeleteInscription(int id_inscription)
         {
             return await _mediator.Send(new EliminarInscription.deleteInscription { id_inscription = id_inscription });
+        }
+
+        //Obtener horario por inscripcion
+        [HttpGet("horario/{id_inscription}")]
+        public async Task<ActionResult<List<V_HorarioInscripcion>>> GetHorarioByInscription(int id_inscription)
+        {
+            var horarios = await _mediator.Send(new HorarioInscripcion.horarioPorInscripcion { id_inscription = id_inscription });
+            if(horarios == null)
+            {
+                return NotFound();
+            }
+            return horarios;
         }
     }
 }
