@@ -13,5 +13,6 @@ namespace Dominio.Views
         public int id_group { get; set; }
         public int nota { get; set; }
         public int id_det_inscription { get; set; }
+        public int inscription_id { get; set; }
     }
 }
