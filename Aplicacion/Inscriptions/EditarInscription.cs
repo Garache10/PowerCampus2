@@ -15,7 +15,6 @@ namespace Aplicacion.Inscriptions
         public class editInscription : IRequest
         {
             public int id_inscription { get; set; }
-            public DateTime inscription_day { get; set; }
             public string user_id { get; set; }
             public int status { get; set; }
         }
@@ -37,7 +36,6 @@ namespace Aplicacion.Inscriptions
                     throw new ManejadorExcepcion(HttpStatusCode.NotFound, new { user = "No se encontró la inscripción" });
                 }
 
-                inscription.inscription_day = request.inscription_day; //?? inscription.inscription_day;
                 inscription.user_id = request.user_id ?? inscription.user_id;
                 inscription.status = request.status; //?? inscription.status;
 

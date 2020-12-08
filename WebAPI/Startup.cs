@@ -81,6 +81,9 @@ namespace WebAPI
             services.AddMediatR(typeof(AgregarInscription.Manejador).Assembly);
             services.AddMediatR(typeof(EditarInscription.Manejador).Assembly);
             services.AddMediatR(typeof(EliminarInscription.Manejador).Assembly);
+            services.AddMediatR(typeof(ConsultaInscriptionByUser.Manejador).Assembly);
+            services.AddMediatR(typeof(ClasesEstudianteInscripcion.Manejador).Assembly);
+            services.AddMediatR(typeof(HorarioInscripcion.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarInscription>());
 
             //services from Groups
@@ -92,6 +95,7 @@ namespace WebAPI
             services.AddMediatR(typeof(ConsultaGroupsByTeacher.Manejador).Assembly);
             services.AddMediatR(typeof(EstudiantesByGroup.Manejador).Assembly);
             services.AddMediatR(typeof(GroupByCourse.Manejador).Assembly);
+            services.AddMediatR(typeof(GroupsByCourse_v.Manejador).Assembly);
             services.AddMediatR(typeof(HorarioByGroup.Manejador).Assembly);
             services.AddMediatR(typeof(AgregarHorario.Manejador).Assembly);
             services.AddMediatR(typeof(EditarHorario.Manejador).Assembly);

@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Inscriptions;
 using Dominio;
+using Dominio.Views;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,32 @@ namespace WebAPI.Controllers
             return inscription;
         }
 
+        //Obtener inscripcion por user_id
+        [HttpGet("user/{user_id}")]
+        public async Task<ActionResult<T_inscription>> GetInscriptionByUser(string user_id)
+        {
+            user_id = (string)this.RouteData.Values["user_id"];
+            var inscription = await _mediator.Send(new ConsultaInscriptionByUser.insByUser { user_id = user_id });
+            if (inscription == null)
+            {
+                return NotFound();
+            }
+            return inscription;
+        }
+
+        //Verificar inscripcion por user_id
+        [HttpGet("userVerify/{user_id}")]
+        public async Task<ActionResult<Boolean>> VerifyInscriptionByUser(string user_id)
+        {
+            user_id = (string)this.RouteData.Values["user_id"];
+            var inscription = await _mediator.Send(new ConsultaInscriptionByUser.insByUser { user_id = user_id });
+            if (inscription == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
         //Insertar un usuario
         [HttpPost]
         public async Task<ActionResult<Unit>> PostInscription(AgregarInscription.newInscription data)
@@ -61,6 +88,18 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<Unit>> DeleteInscription(int id_inscription)
         {
             return await _mediator.Send(new EliminarInscription.deleteInscription { id_inscription = id_inscription });
+        }
+
+        //Obtener horario por inscripcion
+        [HttpGet("horario/{id_inscription}")]
+        public async Task<ActionResult<List<V_HorarioInscripcion>>> GetHorarioByInscription(int id_inscription)
+        {
+            var horarios = await _mediator.Send(new HorarioInscripcion.horarioPorInscripcion { id_inscription = id_inscription });
+            if(horarios == null)
+            {
+                return NotFound();
+            }
+            return horarios;
         }
     }
 }

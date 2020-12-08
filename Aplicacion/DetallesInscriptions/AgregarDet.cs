@@ -18,6 +18,7 @@ namespace Aplicacion.DetallesInscriptions
         {
             public int inscription_id { get; set; }
             public int group_id { get; set; }
+            public int nota { get; set; }
         }
 
         public class validar : AbstractValidator<newDet>
@@ -42,7 +43,8 @@ namespace Aplicacion.DetallesInscriptions
                 var det = new T_det_inscription
                 {
                     group_id = request.group_id,
-                    inscription_id = request.inscription_id
+                    inscription_id = request.inscription_id,
+                    nota = 0
                 };
 
                 _context.t_det_inscription.Add(det);

@@ -1,5 +1,7 @@
 ﻿using Aplicacion.DetallesInscriptions;
+using Aplicacion.Inscriptions;
 using Dominio;
+using Dominio.Views;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -37,10 +39,23 @@ namespace WebAPI.Controllers
             return det;
         }
 
-        [HttpGet("classes/{inscription_id}")]
+        //Obtener detalle de inscripcion por id de inscripcion
+        [HttpGet("classesT/{inscription_id}")]
         public async Task<ActionResult<IEnumerable<T_det_inscription>>> GetDetByInscription(int inscription_id)
         {
             var classes = await _mediator.Send(new ConsultaDetailsByInscription.DetailsByInscription { inscription_id = inscription_id });
+            if (classes == null)
+            {
+                return NotFound();
+            }
+            return classes;
+        }
+
+        //Obtener detalle de inscripcion por id de inscripcion en vista
+        [HttpGet("classes/{inscription_id}")]
+        public async Task<ActionResult<IEnumerable<V_InscripcionEstudianteClases>>> GetDetByInscriptionV(int inscription_id)
+        {
+            var classes = await _mediator.Send(new ClasesEstudianteInscripcion.ListaClases { inscription_id = inscription_id });
             if (classes == null)
             {
                 return NotFound();
