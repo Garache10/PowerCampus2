@@ -26,6 +26,7 @@ using Dominio;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Aplicacion.Users;
+using Aplicacion.Dashboard;
 
 namespace WebAPI
 {
@@ -111,6 +112,9 @@ namespace WebAPI
             services.AddMediatR(typeof(EliminarDet.Manejador).Assembly);
             services.AddMediatR(typeof(ConsultaDetailsByInscription.Manejador).Assembly);
             services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<AgregarDet>());
+
+            //services from Dashboard
+            services.AddMediatR(typeof(ConsultaDashboard.Manejador).Assembly);
 
             //services from Identity
             var builder = services.AddIdentityCore<T_user>();
