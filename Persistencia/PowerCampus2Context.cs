@@ -30,6 +30,7 @@ namespace Persistencia
             modelbuilder.Entity<V_groupsByCourse>().HasKey(tr => new { tr.id_group });
             modelbuilder.Entity<V_InscripcionEstudianteClases>().HasNoKey();
             modelbuilder.Entity<V_HorarioInscripcion>().HasNoKey();
+            modelbuilder.Entity<V_Dashboard>().HasNoKey();
         }
 
         //DbSet of tables
@@ -48,5 +49,6 @@ namespace Persistencia
         public DbSet<V_groupsByCourse> v_groupsByCourse { get; set; }
         public DbSet<V_InscripcionEstudianteClases> v_InscripcionEstudianteClases { get; set; }
         public DbSet<V_HorarioInscripcion> v_HorarioInscripcion { get; set; }
+        public DbSet<V_Dashboard> v_Dashboard { get; set; }
     }
 }
